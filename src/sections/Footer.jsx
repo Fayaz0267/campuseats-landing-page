@@ -33,7 +33,7 @@ export default function Footer() {
         </div>
 
         <div className="footer__bottom">
-          © {new Date().getFullYear()} CampusEats. Built for the iQOO Hackathon.
+          © {new Date().getFullYear()} CampusEats.
         </div>
       </div>
     </footer>
