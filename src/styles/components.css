@@ -99,20 +99,17 @@
 
 .navbar__mobile {
   position: fixed;
-  /* Start BELOW the header row, not at the very top — otherwise this
-     panel sits over the header (same stacking context) and hides the
-     close button behind itself. */
-  top: calc(68px + env(safe-area-inset-top, 0px));
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
+  z-index: 90;
   /* Solid background, not translucent/blurred — a see-through panel is
      the failure mode on browsers with flaky backdrop-filter support. */
   background: #17171f;
-  z-index: 90;
   display: flex;
   flex-direction: column;
-  padding: 28px var(--gutter);
+  /* Push content below the header (which sits on top at z-index: 100)
+     with padding, instead of offsetting the panel's own top/height —
+     that's what was causing it to fall short of the screen bottom. */
+  padding: calc(68px + env(safe-area-inset-top, 0px) + 28px) var(--gutter) 28px;
   gap: 4px;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
@@ -122,7 +119,6 @@
   pointer-events: none;
   transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease), visibility 0s linear var(--dur);
 }
-
 .navbar__mobile.is-open {
   opacity: 1;
   transform: translateY(0);
@@ -130,6 +126,7 @@
   pointer-events: auto;
   transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
 }
+
 
 .navbar__mobile a {
   padding: 14px 4px;
