@@ -99,17 +99,20 @@
 
 .navbar__mobile {
   position: fixed;
-  top: 0;
+  /* Start BELOW the header row, not at the very top — otherwise this
+     panel sits over the header (same stacking context) and hides the
+     close button behind itself. */
+  top: calc(68px + env(safe-area-inset-top, 0px));
   left: 0;
   right: 0;
-  height: 100dvh;
+  bottom: 0;
   /* Solid background, not translucent/blurred — a see-through panel is
      the failure mode on browsers with flaky backdrop-filter support. */
   background: #17171f;
-  z-index: 150;
+  z-index: 90;
   display: flex;
   flex-direction: column;
-  padding: calc(68px + env(safe-area-inset-top, 0px) + 28px) var(--gutter) 28px;
+  padding: 28px var(--gutter);
   gap: 4px;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
