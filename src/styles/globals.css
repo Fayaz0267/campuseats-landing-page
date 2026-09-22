@@ -1,0 +1,145 @@
+/* ============================================================
+   CampusEats — Design tokens
+   Brand colors are fixed by the brief; everything else (type
+   scale, spacing, radii, motion) is derived deliberately from them.
+   ============================================================ */
+
+:root {
+  color-scheme: dark;
+
+  /* Brand */
+  --bg: #1a1a1a;
+  --surface: #232335;
+  --surface-raised: #2a2a40;
+  --accent: #d96b27;
+  --accent-soft: #d96b2722;
+  --accent-dim: #9c4f1c;
+  --white: #ffffff;
+
+  /* Text */
+  --ink: #f4f2ee;
+  --ink-dim: #b9b7c4;
+  --ink-faint: #7d7b8c;
+
+  /* Semantic tints (used sparingly — one per audience card) */
+  --tint-student: #d96b27;
+  --tint-canteen: #4f9d7a;
+  --tint-college: #6c8ecf;
+
+  /* Structure */
+  --border: #ffffff14;
+  --border-strong: #ffffff26;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 26px;
+  --radius-pill: 999px;
+
+  /* Type */
+  --font-display: 'Outfit', 'Inter', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+
+  /* Layout */
+  --content-max: 1180px;
+  --gutter: 24px;
+  --section-space: clamp(64px, 10vw, 128px);
+
+  /* Motion */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 180ms;
+  --dur: 420ms;
+
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 84px;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.08;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+p {
+  margin: 0;
+  color: var(--ink-dim);
+  max-width: 62ch;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--content-max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.section {
+  padding-block: var(--section-space);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--white);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

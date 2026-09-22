@@ -1,0 +1,215 @@
+.phone {
+  --phone-w: 300px;
+  width: var(--phone-w);
+  aspect-ratio: 300 / 612;
+  border-radius: 42px;
+  padding: 10px;
+  background: linear-gradient(160deg, #2c2c42, #1c1c2c);
+  border: 1px solid var(--border-strong);
+  box-shadow:
+    0 40px 80px -30px #00000090,
+    0 0 0 1px #ffffff08 inset;
+  position: relative;
+  flex: none;
+}
+
+.phone__notch {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 84px;
+  height: 22px;
+  background: #1c1c2c;
+  border-radius: 0 0 16px 16px;
+  z-index: 5;
+}
+
+.phone__screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 32px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #1e1e2e, #17171f 60%);
+}
+
+.phone__statusbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 20px 6px;
+  font-size: 0.72rem;
+  color: var(--ink-faint);
+}
+
+.phone__content {
+  padding: 12px 16px 16px;
+  height: 100%;
+  overflow: hidden;
+}
+
+.phone__greeting {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--white);
+  margin-bottom: 2px;
+}
+
+.phone__sub {
+  font-size: 0.74rem;
+  color: var(--ink-faint);
+  margin-bottom: 14px;
+}
+
+.phone__search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  padding: 9px 14px;
+  margin-bottom: 16px;
+}
+
+.phone__search span {
+  font-size: 0.78rem;
+  color: var(--ink-faint);
+}
+
+.phone__food-card {
+  display: flex;
+  gap: 10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 10px;
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.phone__food-thumb {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  font-size: 1.2rem;
+}
+
+.phone__food-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.phone__food-name {
+  font-size: 0.82rem;
+  color: var(--white);
+  font-weight: 500;
+  margin-bottom: 3px;
+}
+
+.phone__food-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.68rem;
+  color: var(--ink-faint);
+}
+
+.phone__food-price {
+  font-size: 0.82rem;
+  color: var(--accent);
+  font-weight: 600;
+  margin-right: 2px;
+}
+
+.phone__add-btn {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--white);
+  display: grid;
+  place-items: center;
+  flex: none;
+  font-size: 0.9rem;
+  border: none;
+}
+
+.phone__tabbar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  padding: 12px 10px calc(14px + env(safe-area-inset-bottom, 0px));
+  background: #17171fdd;
+  backdrop-filter: blur(8px);
+  border-top: 1px solid var(--border);
+}
+
+.phone__tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  font-size: 0.58rem;
+  color: var(--ink-faint);
+}
+
+.phone__tab.is-active {
+  color: var(--accent);
+}
+
+.phone__tab-icon {
+  width: 18px;
+  height: 18px;
+  border-radius: 6px;
+  background: currentColor;
+  opacity: 0.85;
+}
+
+.phone__track-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px;
+  margin-top: 4px;
+}
+
+.phone__track-title {
+  font-size: 0.78rem;
+  color: var(--white);
+  margin-bottom: 10px;
+}
+
+.phone__track-steps {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.phone__track-step {
+  flex: 1;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--border-strong);
+}
+
+.phone__track-step.is-done {
+  background: var(--accent);
+}
+
+.phone__track-label {
+  margin-top: 8px;
+  font-size: 0.68rem;
+  color: var(--ink-faint);
+}
+
+@media (min-width: 640px) {
+  .phone { --phone-w: 340px; }
+}
