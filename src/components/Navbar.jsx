@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import Button from './Button.jsx';
 import useScrolled from '../hooks/useScrolled.js';
@@ -15,6 +15,16 @@ const NAV_LINKS = [
 export default function Navbar() {
   const scrolled = useScrolled(12);
   const [open, setOpen] = useState(false);
+
+  // Lock background scroll while the mobile menu is open — without this,
+  // the page behind can scroll under the panel and, on browsers that
+  // don't render backdrop-filter, bleed through and overlap the menu text.
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [open]);
 
   return (
     <header className={`navbar ${scrolled ? 'is-scrolled' : ''}`}>

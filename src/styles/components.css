@@ -12,10 +12,19 @@
 }
 
 .navbar.is-scrolled {
-  background: #1a1a1acc;
-  backdrop-filter: blur(14px) saturate(140%);
-  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  /* Solid fallback first — blur is only layered on where it's actually
+     supported, via @supports below, so nothing bleeds through on
+     browsers that silently ignore backdrop-filter. */
+  background: #1a1a1af2;
   border-bottom: 1px solid var(--border);
+}
+
+@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+  .navbar.is-scrolled {
+    background: #1a1a1acc;
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+  }
 }
 
 .navbar__row {
@@ -90,26 +99,33 @@
 
 .navbar__mobile {
   position: fixed;
-  inset: 68px 0 0 0;
-  top: calc(68px + env(safe-area-inset-top, 0px));
-  background: #17171fee;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  z-index: 99;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100dvh;
+  /* Solid background, not translucent/blurred — a see-through panel is
+     the failure mode on browsers with flaky backdrop-filter support. */
+  background: #17171f;
+  z-index: 150;
   display: flex;
   flex-direction: column;
-  padding: 28px var(--gutter);
+  padding: calc(68px + env(safe-area-inset-top, 0px) + 28px) var(--gutter) 28px;
   gap: 4px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   transform: translateY(-8px);
   opacity: 0;
+  visibility: hidden;
   pointer-events: none;
-  transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
+  transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease), visibility 0s linear var(--dur);
 }
 
 .navbar__mobile.is-open {
   opacity: 1;
   transform: translateY(0);
+  visibility: visible;
   pointer-events: auto;
+  transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
 }
 
 .navbar__mobile a {
