@@ -4,7 +4,7 @@
   position: fixed;
   inset-inline: 0;
   top: 0;
-  z-index: 100;
+  z-index: 1000;
   padding-top: env(safe-area-inset-top, 0px);
   background: transparent;
   border-bottom: 1px solid transparent;
@@ -100,7 +100,7 @@
 .navbar__mobile {
   position: fixed;
   inset: 0;
-  z-index: 90;
+  z-index: 999;
   /* Solid background, not translucent/blurred — a see-through panel is
      the failure mode on browsers with flaky backdrop-filter support. */
   background: #17171f;
