@@ -9,7 +9,7 @@ export const DEMO_MENU = [
   {
     id: 'masala-dosa',
     name: 'Masala Dosa',
-    price: 90,
+    price: 70,
     veg: true,
     pickupMinutes: 10,
     tags: ['spicy', 'quick', 'budget'],
